@@ -1,0 +1,18 @@
+{
+  "name": "@nexaerp/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NexaERP Maroc API (NestJS style modular starter)",
+  "scripts": {
+    "start:dev": "node src/main.js",
+    "start": "node src/main.js",
+    "lint": "echo \"No lint configured yet\"",
+    "build": "echo \"No build step configured yet\""
+  },
+  "dependencies": {
+    "express": "4.19.2",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "jsonwebtoken": "9.0.2"
+  }
+}

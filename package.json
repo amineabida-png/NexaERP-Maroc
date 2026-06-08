@@ -1,0 +1,17 @@
+{
+  "name": "nexaerp-maroc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "NexaERP Maroc monorepo (Next.js + NestJS)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace @nexaerp/web run dev",
+    "dev:api": "npm --workspace @nexaerp/api run start:dev",
+    "build": "npm run build -ws",
+    "lint": "npm run lint -ws",
+    "format": "npm run format -ws"
+  }
+}

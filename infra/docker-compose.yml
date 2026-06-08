@@ -1,0 +1,45 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    container_name: nexaerp_postgres
+    environment:
+      POSTGRES_USER: nexaerp
+      POSTGRES_PASSWORD: nexaerp
+      POSTGRES_DB: nexaerp
+    ports:
+      - "5432:5432"
+    volumes:
+      - nexaerp_postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: nexaerp_redis
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: ../apps/api
+      dockerfile: ../../infra/docker/Dockerfile.api
+    environment:
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: ../../infra/docker/Dockerfile.web
+    environment:
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  nexaerp_postgres_data:
